@@ -107,6 +107,15 @@ class AuthController{
             return res.status(500).json({success: false, error: error.message})
         }
     }
+
+    // Chức năng xác thực người dùng
+    verify = async(req, res) => {
+        return res.status(200).json({
+            success: true,
+            message: "Xác thực người dùng thành công",
+            user: req.user // req.user được gán trong authMiddleware
+        })
+    }
 }
 
 module.exports = new AuthController()
