@@ -50,7 +50,7 @@ class AuthController{
     login = async(req, res) => {
         try {
             const {email, password} = req.body
-            
+
             // Kiểm tra xem email có tồn tại hay không
             const user = await User.findOne({ email})
             if (!user) {
@@ -88,6 +88,21 @@ class AuthController{
                 }
             })
 
+        } catch (error) {
+            return res.status(500).json({success: false, error: error.message})
+        }
+    }
+
+    // Chức năng dăng xuất
+    logout = async(req, res) => {
+        try {
+           res.clearCookie('token', {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                path: '/',
+            });
+            return res.status(200).json({success: true, message: "Đăng xuất thành công"})
         } catch (error) {
             return res.status(500).json({success: false, error: error.message})
         }
