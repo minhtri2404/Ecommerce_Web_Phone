@@ -1,9 +1,13 @@
 <template>
-  <div class="container text-center mt-5">
-    <h1 class="text-primary">🎉 Vue 3 + Vite + Bootstrap</h1>
-    <p class="text-muted">Cài đặt thành công rồi nè!</p>
+  <div class="flex flex-col items-center justify-center min-h-screen text-center bg-gray-50">
+    <h1 class="text-3xl font-bold text-blue-600">🎉 Vue 3 + Vite + TailwindCSS</h1>
+    <p class="text-gray-600 mt-2">Cài đặt Tailwind thành công rồi nè!</p>
 
-    <button class="btn btn-success mt-3">Click me</button>
+    <button
+      class="mt-4 px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition"
+    >
+      Click me
+    </button>
   </div>
 </template>
 
