@@ -35,6 +35,10 @@ const startServer = async () => {
     // localhost:4000/api/auth
     const authRoute = require('./src/routes/auth')
     app.use('/api/auth', authRoute)
+
+    // localhost:4000/api/category
+    const categoryRoute = require('./src/routes/category')
+    app.use('/api/category', categoryRoute)
     
 
     app.get('/', (req, res) => {
