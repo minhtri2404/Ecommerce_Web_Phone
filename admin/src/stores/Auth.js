@@ -40,10 +40,10 @@ const verify = async () => {
   }
 }
 
-// ✅ tự động xác thực mỗi 2 phút
-setInterval(() => {
-  verify()
-}, 2 * 60 * 1000)
+// // ✅ tự động xác thực mỗi 2 phút
+// setInterval(() => {
+//   verify()
+// }, 2 * 60 * 1000)
 
 export function useAuth() {
   return { user, login, logout, verify }

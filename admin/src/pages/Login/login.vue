@@ -91,7 +91,7 @@ const handleLogin = async(e) => {
         
         login(res.data.user)
         setTimeout(() => {
-            router.push('/admin/dashboard');
+            router.push('/admin-dashboard');
         }, 2000);
       }  
 
