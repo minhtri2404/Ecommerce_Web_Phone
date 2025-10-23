@@ -91,7 +91,11 @@ const handleLogin = async(e) => {
         
         login(res.data.user)
         setTimeout(() => {
-            router.push('/admin-dashboard');
+            if (res.data.user.role === 'admin') {
+                router.push('/admin-dashboard');
+            } else {
+                router.push('/403');
+            }
         }, 2000);
       }  
 
