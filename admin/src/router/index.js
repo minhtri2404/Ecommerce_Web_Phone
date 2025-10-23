@@ -1,7 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Login from '../pages/Login/login.vue'
+// Layouts
+import AdminLayout from '../components/ComAdmin.vue'
 
+// Pages
+import Login from '../pages/Login/login.vue'
+import AdminDashboard from '../pages/dashboard/dashboard.vue'
 const routes = [
   {
     path: '/login',
@@ -12,6 +16,14 @@ const routes = [
   {
     path: '/',
     redirect: '/login' // 👈 thêm dòng này
+  },
+
+  {
+    path: '/admin',
+    component: AdminLayout,
+    children: [
+      { path: 'dashboard', name: 'AdminDashboard', component: AdminDashboard }
+    ]
   }
 ]
 

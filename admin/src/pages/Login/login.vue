@@ -1,5 +1,13 @@
 <template>
     <div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 via-white to-teal-100 font-[Montserrat]">
+        <!-- Alert Toast -->
+        <Alert
+            v-model="showAlert"
+            :type="alertType"
+            :title="alertTitle"
+            :message="alertMessage"
+            :duration="3000"
+        />
         <div class="bg-white rounded-[30px] shadow-[0_5px_25px_rgba(0,0,0,0.2)] w-[400px] max-w-full min-h-[480px] flex flex-col justify-center items-center px-10 transition-all duration-300 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)]">
 
             <form @submit.prevent="handleLogin" class="w-full flex flex-col items-center">
@@ -48,12 +56,28 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useAuth } from '@/stores/Auth';
 import { useRouter } from 'vue-router';
+import Alert from '@/components/Alert/Alert.vue';
+
 
 const {login} = useAuth();
 const email = ref('');
 const password = ref('');
 const router = useRouter();
 
+// ALERT state
+const showAlert = ref(false);
+const alertType = ref('success'); // success | error
+const alertTitle = ref('');
+const alertMessage = ref('');
+
+const showToast = (type, title, message) => {
+  alertType.value = type;
+  alertTitle.value = title;
+  alertMessage.value = message;
+  showAlert.value = true;
+};
+
+// Gọi API đăng nhập
 const handleLogin = async(e) => {
     e.preventDefault();
     try {
@@ -63,12 +87,21 @@ const handleLogin = async(e) => {
     )
 
       if (res.data.success) {
+        showToast('success', 'Thành công', 'Đăng nhập thành công! Bạn sẽ được chuyển hướng...');
+        
         login(res.data.user)
-        router.push('/admin/dashboard')
+        setTimeout(() => {
+            router.push('/admin/dashboard');
+        }, 2000);
       }  
 
     } catch (error) {
-       console.log(error) 
+       if (error.response && error.response.data) {
+            const message = error.response.data.message || error.response.data.error || 'Đã xảy ra lỗi không xác định';
+            showToast('error', 'Lỗi đăng nhập', message);
+        } else{
+            showToast('error', 'Thất bại', 'Không thể đăng nhập. Vui lòng thử lại sau!');
+        }
     } 
 }
 

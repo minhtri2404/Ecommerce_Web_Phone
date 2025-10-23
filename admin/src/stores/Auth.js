@@ -2,24 +2,11 @@ import router from '@/router/index.js'
 import { ref } from 'vue'
 import axios from 'axios'
 
-const user = ref(null)
+const user = ref(JSON.parse(localStorage.getItem('user')) || null)
 
-const login = async (email, password) => {
-  try {
-    const response = await axios.post(
-      'http://localhost:4000/api/auth/login',
-      { email, password },
-      { withCredentials: true } // 👈 gửi & nhận cookie
-    )
-
-    if (response.data.success) {
-      user.value = response.data.user
-      localStorage.setItem('user', JSON.stringify(response.data.user))
-      router.push('/dashboard') // hoặc trang bạn muốn
-    }
-  } catch (error) {
-    console.error('Đăng nhập thất bại:', error)
-  }
+const login = (userData) => {
+  user.value = userData
+  localStorage.setItem('user', JSON.stringify(userData))
 }
 
 const logout = async () => {
