@@ -18,11 +18,12 @@
 </template>
 
 <script setup>
-import { dashboardicon, category, production, user, order} from '../icons/icons'
+import { dashboardicon, category, brand, production, user, order} from '../icons/icons'
 
 const sidebarLinks = [
   { name: 'Trang tổng quan', path: '/admin-dashboard', icon: dashboardicon },
   { name: 'Quản lý danh mục', path: '/admin-dashboard/category', icon: category },
+  { name: 'Quản lý thương hiệu', path: '/admin-dashboard/brand', icon: brand },
   { name: 'Quản lý sản phẩm', path: '/admin-dashboard/product', icon: production },
   { name: 'Quản lý người dùng', path: '/admin-dashboard/user', icon: user },
   { name: 'Quản lý đơn hàng', path: '/admin-dashboard/order', icon: order },
