@@ -104,6 +104,30 @@ class CategoryController{
             }
         })
     }
+
+    // Xóa danh mục
+    deleteCategory = async(req, res) => {
+        try {
+            const {id} = req.params
+
+            const deleteCategory = await Category.findByIdAndDelete(id)
+            if (!deleteCategory) {
+                return res.status(404).json({success: false, message: 'Không tìm thấy danh mục'})
+            }
+
+            //Nếu có hình ảnh thì xóa
+            if (deleteCategory.categoryImage) {
+                const imagePath = path.join(__dirname, '..', '..', 'public', 'uploads/category', deleteCategory.categoryImage)
+                if (fs.existsSync(imagePath)) {
+                    fs.unlinkSync(imagePath)
+                }
+            }
+
+            return res.status(200).json({success: true, message: 'Xóa thành công'})
+        } catch (error) {
+            return res.status(500).json({success: false, message: "Server Error"})
+        }
+    }
 }
 
 module.exports = new CategoryController()

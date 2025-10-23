@@ -9,6 +9,6 @@ router.post("/add", authMiddleware,verifyRole('admin'), categoryController.addCa
 router.get("/", categoryController.getAllCategories)
 router.get('/:id', authMiddleware, categoryController.getCategories)
 router.put('/:id', authMiddleware, verifyRole('admin'), categoryController.updateCategory)
-// router.delete('/:id', authMiddleware, categoryController.deleteCategory)
+router.delete('/:id', authMiddleware, verifyRole('admin'), categoryController.deleteCategory)
 
 module.exports = router;
