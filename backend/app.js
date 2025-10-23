@@ -20,7 +20,7 @@ const startServer = async () => {
     const port = process.env.PORT || 4000;
 
     app.use(cors({
-      origin: 'http://localhost:5173', // domain frontend (Vue, React,...)
+      origin: ['http://localhost:5173', 'http://localhost:5174'], // cho phép cả 2 cổng
       credentials: true, // cho phép cookie đi kèm
     }));
     app.use(morgan('combined'));
