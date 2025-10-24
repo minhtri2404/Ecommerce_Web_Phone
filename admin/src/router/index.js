@@ -9,6 +9,7 @@ import Login from '../pages/Login/login.vue'
 import Forbidden from '../pages/403/Forbidden.vue'
 import AdminDashboard from '../pages/dashboard/dashboard.vue'
 import CategoryList from '../pages/category/List.vue'
+import AddCategory from '../pages/category/Add.vue'
 const routes = [
   {
     path: '/login',
@@ -33,7 +34,8 @@ const routes = [
     meta: { requiresAuth: true, role: 'admin' }, // thêm role
     children: [
       { path: 'dashboard', name: 'AdminDashboard', component: AdminDashboard },
-      { path: 'category', name: 'CategoryList', component: CategoryList }
+      { path: 'category', name: 'CategoryList', component: CategoryList },
+      { path: 'add-category', name: 'AddCategory', component: AddCategory }
     ]
   }
 ]
