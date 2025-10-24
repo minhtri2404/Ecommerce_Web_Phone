@@ -127,7 +127,7 @@ import Alert from '@/components/Alert/Alert.vue';
 const categories  = ref([])
 const search = ref('')
 const currentPage = ref(1)
-const itemsPerPage = 5
+const itemsPerPage = 4
 
 // ALERT state
 const showAlert = ref(false)
