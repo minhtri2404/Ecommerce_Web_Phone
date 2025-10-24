@@ -162,6 +162,30 @@ const fetchCategory = async() => {
    }
 }
 
+// Gọi API để xóa danh mục
+const deleteCategory = async(id) => {
+    const confirmDelete = confirm('Bạn có muốn xóa danh mục này không')
+    if (confirmDelete) {
+        try {
+            const res = await axios.delete(`http://localhost:4000/api/category/${id}`,
+                {withCredentials: true} // 👈 gửi cookie qua trình duyệt
+            )
+            if (res.data.success) {
+                showToast('success', 'Thành công', res.data.message)
+                await fetchCategory()
+            } else{
+                showToast('error', 'Thất bại', res.data.message)
+            }
+        } catch (error) {
+            if (error.response && !error.response.data.success) {
+                showToast('error', 'Đã xảy ra lỗi khi tải dữ liệu.', error.response.data.error);
+            }  else {
+                showToast('error', 'Lỗi kết nối', 'Không thể kết nối đến server.');
+            }
+        }
+    }
+}
+
 // Tìm kiếm khách hàng theo tiêu đề
 const filteredCategory = computed(() =>
   categories.value.filter(category =>
