@@ -8,9 +8,16 @@ import AdminLayout from '../components/ComAdmin.vue'
 import Login from '../pages/Login/login.vue'
 import Forbidden from '../pages/403/Forbidden.vue'
 import AdminDashboard from '../pages/dashboard/dashboard.vue'
+
+// Category Page
 import CategoryList from '../pages/category/List.vue'
 import AddCategory from '../pages/category/Add.vue'
 import EditCategory from '../pages/category/Edit.vue'
+
+// Brand Page
+import BrandList from '../pages/brand/List.vue'
+import AddBrand from '../pages/brand/Add.vue'
+import EditBrand from '../pages/brand/Edit.vue'
 const routes = [
   {
     path: '/login',
@@ -38,6 +45,9 @@ const routes = [
       { path: 'category', name: 'CategoryList', component: CategoryList},
       { path: 'add-category', name: 'AddCategory', component: AddCategory},
       { path: 'category/:id', name: 'EditCategory', component: EditCategory},
+      { path: 'brand', name: 'BrandList', component: BrandList},
+      { path: 'add-brand', name: 'AddBrand', component: AddBrand},
+      { path: 'brand/:id', name: 'EditBrand', component: EditBrand},
 
     ]
   }

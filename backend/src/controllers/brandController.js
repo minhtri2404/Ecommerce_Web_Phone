@@ -115,7 +115,7 @@ class BrandController{
 
             //Nếu có hình ảnh thì xóa
             if (deleteBrand.image) {
-                const imagePath = path.join(__dirname, '..', '..', 'public', 'uploads/category', deleteBrand.image)
+                const imagePath = path.join(__dirname, '..', '..', 'public', 'uploads/brand', deleteBrand.image)
                 if (fs.existsSync(imagePath)) {
                     fs.unlinkSync(imagePath)
                 }
