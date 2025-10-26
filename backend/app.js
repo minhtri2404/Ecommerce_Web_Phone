@@ -39,6 +39,10 @@ const startServer = async () => {
     // localhost:4000/api/category
     const categoryRoute = require('./src/routes/category')
     app.use('/api/category', categoryRoute)
+
+    // localhost:4000/api/brand
+    const brandRoute = require('./src/routes/brand')
+    app.use('/api/brand', brandRoute)
     
 
     app.get('/', (req, res) => {
