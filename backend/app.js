@@ -44,6 +44,10 @@ const startServer = async () => {
     const brandRoute = require('./src/routes/brand')
     app.use('/api/brand', brandRoute)
     
+    const productRoute = require('./src/routes/product')
+    app.use('/api/product', productRoute)
+
+
 
     app.get('/', (req, res) => {
       res.json({ message: 'Welcome' });
